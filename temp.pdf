@@ -1,0 +1,72 @@
+Gen AI Interview related questions
+ANN:
+When you are in a software engineering interview, the best way to explain an Artificial Neural Network (ANN) is to contrast it directly with the kind of traditional development and data integration you already do every day.
+
+Here is a straightforward, conversational script you can adapt for your interview.
+
+### 1. How to Explain "What is an ANN?"
+
+**What to say:**
+
+> "In traditional software development, if I need to process data or build an integration, I write explicit rules. I take the input, write the transformation logic, and generate the output.
+> An Artificial Neural Network flips that process upside down. Instead of writing the rules, you provide the network with thousands of examples of the *input* and the desired *output*. The ANN then uses math 
+to figure out the rules on its own. It's built using layers of 'nodes' that loosely mimic biological neurons, which adjust their internal connections—or 'weights'—through trial and error until they can accurately map the inputs to the correct outputs."
+
+**Why this works:** It shows the interviewer you understand the fundamental paradigm shift between deterministic programming (writing explicit scripts or SQL queries) and probabilistic machine learning.
+
+### 2. How to Explain "Where it Lacks"
+
+Interviewers want to see that you understand the operational downsides of a technology, not just the hype. Focus on these three practical limitations:
+
+**What to say:**
+
+> "While they are incredibly powerful for pattern recognition, ANNs have three major limitations in a production environment:
+> 1. **The Black Box Problem:** In standard code, if a transaction fails or transforms incorrectly, I can step through the code or check the logs to find the exact bug. With an ANN, the logic is distributed across millions of mathematical weights. It is extremely difficult to debug or explain exactly *why* it made a specific decision.
+> 2. **Extreme Data Dependency:** You can write a hardcoded script to handle a new business requirement in an afternoon. An ANN, however, requires massive amounts of clean, labeled historical data just to learn basic patterns. Without great data, the model is useless.
+> 3. **Poor Handling of Edge Cases:** Traditional applications can be programmed to throw an exception or fail gracefully when they hit unexpected data. If an ANN encounters data that looks nothing like its training set, it doesn't know it's confused—it will often confidently output a completely wrong answer."
+
+
+**Why this works:** It highlights real-world engineering concerns—maintainability, debugging, data requirements, and error handling. This proves you think like a developer who actually has to support systems in production.
+To understand these three terms, we have to zoom all the way in to a single "node" (or artificial neuron) inside the network.
+
+Every single node in an ANN or RNN performs one fundamental mathematical operation before passing its result to the next layer.
+
+---
+
+If you were to write out what happens inside that blue summation circle and orange activation circle as a simple formula, it looks like this:
+
+$$Output = \text{ActivationFunction}(\sum(Input \times Weight) + Bias)$$
+
+Here is how those three components map to concepts you already use in development:
+
+## 1. Weights (The "Importance" Multiplier)
+
+* **What it is:** A number that an incoming piece of data is multiplied by.
+* **The Developer Analogy:** Think of it as a priority score or a scaling factor.
+* **What it does:** It decides how much influence a specific input should have on the node's final decision. If you are predicting a house's price, the input for "Square Footage" will likely have a much higher weight (larger multiplier) than the input for "Number of Windows." When a neural network "learns," it is primarily just adjusting these weight values up and down.
+
+## 2. Bias (The "Threshold" Offset)
+
+* **What it is:** A constant number added to the sum of the inputs and weights.
+* **The Developer Analogy:** Think of it like a `y-intercept` in a linear equation, or a baseline starting value.
+* **What it does:** It shifts the entire result up or down, allowing the node to trigger more easily or less easily. For example, if a node requires a total sum of $10$ to activate, but the inputs multiplied by the weights only equal $8$, a bias of $+3$ will push the total to $11$, forcing the node to activate even if the inputs were slightly weak.
+
+## 3. Activation Function (The "Decision Maker")
+
+* **What it is:** A mathematical filter applied to the final number (after weights and biases are calculated) before it is passed to the next layer.
+* **The Developer Analogy:** Think of it as an `if/else` statement or a data transformation script.
+* **What it does:** It decides whether the node should "fire" (pass data forward) and in what format. More importantly, it introduces **non-linearity**.
+* Without activation functions, a neural network is just a giant linear regression model. It could only draw straight lines.
+* Common activation functions include **ReLU** (if the number is negative, output 0; otherwise, output the number) and **Sigmoid** (squashes any number into a probability between 0.0 and 1.0).
+
+
+
+---
+
+## See It In Action
+
+You can use this sandbox to see exactly how changing the weight and bias alters the final output depending on which activation function you choose.
+
+### The Interview Summary
+
+If asked to summarize this in an interview, you can say:
